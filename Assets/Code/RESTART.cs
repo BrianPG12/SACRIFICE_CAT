@@ -11,7 +11,8 @@ public class RESTART : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        if(Input.GetKeyDown(KeyCode.R))
+            Restart();
     }
 
     public void Restart()
