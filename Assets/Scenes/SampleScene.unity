@@ -1854,7 +1854,7 @@ SpriteRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: a97c105638bdf8b4a8650670310a4cd3, type: 2}
+  - {fileID: -876546973899608171, guid: a3d800b099a06e0478fb790c5e79057a, type: 3}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -1875,7 +1875,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: af73899d5803d99448134360f184f348, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 7f64a6e091143c0458506b559165cf72, type: 3}
   m_Color: {r: 0.63278943, g: 0.8584906, b: 0.49808654, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -1966,7 +1966,7 @@ BoxCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 0.48, y: 0.48}
+    oldSize: {x: 0.32, y: 0.32}
     newSize: {x: 1, y: 1}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
@@ -2226,8 +2226,8 @@ SceneRoots:
   m_Roots:
   - {fileID: 519420032}
   - {fileID: 619394802}
-  - {fileID: 550310382}
   - {fileID: 1797335676}
+  - {fileID: 550310382}
   - {fileID: 711341325}
   - {fileID: 1928594375}
   - {fileID: 250588263}
