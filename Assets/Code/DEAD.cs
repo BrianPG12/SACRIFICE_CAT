@@ -1,9 +1,12 @@
 using UnityEngine;
+using UnityEngine.UIElements;
 
 public class DEAD : MonoBehaviour
 {
     private Csmera Csmera;
     private GameObject player;
+    private Transform spawnging;
+    [SerializeField] private GameObject deadcat;
 
     [Header("UI")]
     [SerializeField] private GameObject died;
@@ -27,7 +30,9 @@ public class DEAD : MonoBehaviour
             audioSource.PlayOneShot(deathSound);
         }
 
+        spawnging = player.transform;
         Destroy(player);
+        Instantiate(deadcat, spawnging.position, Quaternion.identity);
         died.SetActive(true);
         Csmera.isAlive();
     }
