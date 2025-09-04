@@ -14,6 +14,9 @@ public class YouWin : MonoBehaviour
 
     [SerializeField] private float MaxY;
 
+    private Transform spawnging;
+    [SerializeField] private GameObject Wincat;
+
     private void Start()
     {
         floor = GameObject.Find("Floor");
@@ -30,7 +33,7 @@ public class YouWin : MonoBehaviour
 
         if (player.transform.position.y > MaxY)
         {
-            
+            spawnging = player.transform;
             if (winSound != null && audioSource != null)
             {
                 audioSource.PlayOneShot(winSound);
@@ -38,6 +41,7 @@ public class YouWin : MonoBehaviour
 
             WIN.SetActive(true);
             Destroy(player);
+            Instantiate(Wincat, spawnging.position, Quaternion.identity);
         }
     }
 }
