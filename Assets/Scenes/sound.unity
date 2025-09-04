@@ -1722,7 +1722,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &755008248
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2567,7 +2567,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &1322412463
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2727,7 +2727,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!61 &1366684975
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -3177,6 +3177,7 @@ MonoBehaviour:
   Floor: {fileID: 550310382}
   Cam: {fileID: 519420031}
   moveSound: {fileID: 8300000, guid: 5e126bacb37d15d49b81aa98d59786ab, type: 3}
+  Distance: 1
 --- !u!4 &1797335676
 Transform:
   m_ObjectHideFlags: 0
@@ -3836,7 +3837,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &2035389405
 MonoBehaviour:
   m_ObjectHideFlags: 0
