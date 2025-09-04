@@ -37,6 +37,7 @@ public class Jumping : MonoBehaviour
     }
 
     private bool jumping = false;
+    [SerializeField, Range(0, 10)] private float jumpDistance = 1f;
     void Update()
     {
         MinY = Cam.transform.position.y - Cam.orthographicSize + 1f;
@@ -44,24 +45,24 @@ public class Jumping : MonoBehaviour
 
         if ((Input.GetKeyDown(KeyCode.D) || Input.GetKeyDown(KeyCode.RightArrow) && !jumping))
             if (player.transform.position.x < MaxX)
-                MovePlayer(new Vector2(1, 0));
+                MovePlayer(new Vector2(jumpDistance, 0));
 
         if ((Input.GetKeyDown(KeyCode.A) || Input.GetKeyDown(KeyCode.LeftArrow)) && !jumping)
             if (player.transform.position.x > MinX)
-                MovePlayer(new Vector2(-1, 0));
+                MovePlayer(new Vector2(-jumpDistance, 0));
 
         if ((Input.GetKeyDown(KeyCode.W) || Input.GetKeyDown(KeyCode.UpArrow)) && !jumping)
             if (player.transform.position.y < MaxY)
             { 
                 jumpstate = "Jump";
-                MovePlayer(new Vector2(0, 1));
+                MovePlayer(new Vector2(0, jumpDistance));
             }
 
         if ((Input.GetKeyDown(KeyCode.S) || Input.GetKeyDown(KeyCode.DownArrow)) && !jumping)
             if (player.transform.position.y > MinY)
             {
                 jumpstate = "Backwards";
-                MovePlayer(new Vector2(0, -1));
+                MovePlayer(new Vector2(0, -jumpDistance));
             }
     }
 
