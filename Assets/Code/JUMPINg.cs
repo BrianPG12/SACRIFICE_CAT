@@ -15,11 +15,11 @@ public class Jumping : MonoBehaviour
     private float MinY;
     private float MaxY;
 
-    [SerializeField] private Animation anime;
+    [SerializeField] private Animator anime;
 
     void Start()
     {
-        anime.GetComponent<Animation>();
+        anime.GetComponent<Animator>();
 
         player = gameObject;
         audioSource = GetComponent<AudioSource>();
@@ -29,6 +29,8 @@ public class Jumping : MonoBehaviour
 
         MinY = Cam.transform.position.y - Cam.orthographicSize + 1f;
         MaxY = Cam.transform.position.y + Cam.orthographicSize - 1f;
+
+        anime.SetBool("Jump", false);
     }
 
     void Update()
@@ -62,15 +64,14 @@ public class Jumping : MonoBehaviour
             return;
         else
         {
+            anime.SetBool("Jump", true);
+            
             player.transform.position += (Vector3)direction;
-
-            anime.Stop();
-
-            anime.Play();
 
             // Play movement sound
             if (moveSound != null && audioSource != null)
                 audioSource.PlayOneShot(moveSound);
+
         }
     }
 }

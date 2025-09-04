@@ -142,12 +142,12 @@ TextureImporter:
       name: jjump_test_0
       rect:
         serializedVersion: 2
-        x: 0
-        y: 67
-        width: 279
-        height: 751
+        x: 1
+        y: 68
+        width: 277
+        height: 749
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -164,7 +164,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 
+    spriteID: dde42bc6f6f51c045832e48b7e3a8988
     internalID: 0
     vertices: []
     indices: 
@@ -173,7 +173,8 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      jjump_test_0: -6043306884808566982
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
