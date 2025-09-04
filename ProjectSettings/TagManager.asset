@@ -5,6 +5,12 @@ TagManager:
   serializedVersion: 3
   tags:
   - Obstacle
+  - Grass
+  - Road
+  - River
+  - Forest
+  - Home
+  - City
   layers:
   - Default
   - TransparentFX
