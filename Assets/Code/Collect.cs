@@ -4,35 +4,46 @@ using UnityEngine;
 public class Collect : MonoBehaviour
 {
     [Header("UI Settings")]
-    [SerializeField] private TextMeshProUGUI potatoCounterText; // UI Counter Text
+    [SerializeField] private TextMeshProUGUI potatoCounterText; 
 
     [Header("Player Settings")]
-    [SerializeField] private string potatoTag = "Potato"; // Tag for potato objects
+    [SerializeField] private string potatoTag = "Potato"; 
+
+    [Header("Audio Settings")]
+    [SerializeField] private AudioClip collectSound; 
+    [SerializeField] private AudioSource audioSource; 
 
     private int potatoCount = 0;
 
     void Start()
     {
-        // Initialize UI counter
+        
         UpdateUI();
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        // Check if we collided with a potato
+        
         if (collision.CompareTag(potatoTag))
         {
-            // Increase counter
+          
             potatoCount++;
-            // Update UI
+           
             UpdateUI();
-            // Destroy potato object
+
+            
+            if (audioSource != null && collectSound != null)
+            {
+                audioSource.PlayOneShot(collectSound);
+            }
+
+          
             Destroy(collision.gameObject);
         }
     }
 
     private void UpdateUI()
     {
-        potatoCounterText.text = "Vegetables: " + potatoCount;
+        potatoCounterText.text = " " + potatoCount;
     }
 }

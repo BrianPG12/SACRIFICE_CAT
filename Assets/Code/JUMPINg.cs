@@ -26,7 +26,7 @@ public class Jumping : MonoBehaviour
         player = gameObject;
         audioSource = GetComponent<AudioSource>();
 
-        MaxX = Floor.transform.localScale.x / 2 - 1f;
+        MaxX = Floor.transform.localScale.x / 2 - 4.6f;
         MinX = -Floor.transform.localScale.x / 2 + 1f;
 
         MinY = Cam.transform.position.y - Cam.orthographicSize + 1f;
