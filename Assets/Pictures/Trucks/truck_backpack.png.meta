@@ -173,7 +173,8 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      truck_backpack_0: 5232234784573092546
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

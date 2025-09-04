@@ -173,7 +173,8 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      truck_grape_0: -48274380642838697
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
