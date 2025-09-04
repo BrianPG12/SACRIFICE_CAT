@@ -41,7 +41,7 @@ public class YouWin : MonoBehaviour
 
             WIN.SetActive(true);
             Destroy(player);
-            Instantiate(Wincat, spawnging.position, Quaternion.identity);
+            Instantiate(Wincat, new Vector3(spawnging.position.x, spawnging.position.y - 4, spawnging.position.z), Quaternion.identity);
         }
     }
 }
