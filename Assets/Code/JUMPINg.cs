@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 
 public class Jumping : MonoBehaviour
@@ -32,46 +33,36 @@ public class Jumping : MonoBehaviour
         MaxY = Cam.transform.position.y + Cam.orthographicSize - 1f;
 
         if (Input.GetKeyDown(KeyCode.D) || Input.GetKeyDown(KeyCode.RightArrow))
-        {
             if (player.transform.position.x < MaxX)
-            {
-                MovePlayer(new Vector3(1, 0, 0));
-            }
-        }
+                MovePlayer(new Vector2(1, 0));
 
         if (Input.GetKeyDown(KeyCode.A) || Input.GetKeyDown(KeyCode.LeftArrow))
-        {
             if (player.transform.position.x > MinX)
-            {
-                MovePlayer(new Vector3(-1, 0, 0));
-            }
-        }
+                MovePlayer(new Vector2(-1, 0));
 
         if (Input.GetKeyDown(KeyCode.W) || Input.GetKeyDown(KeyCode.UpArrow))
-        {
             if (player.transform.position.y < MaxY)
-            {
-                MovePlayer(new Vector3(0, 1, 0));
-            }
-        }
+                MovePlayer(new Vector2(0, 1));
 
         if (Input.GetKeyDown(KeyCode.S) || Input.GetKeyDown(KeyCode.DownArrow))
-        {
             if (player.transform.position.y > MinY)
-            {
-                MovePlayer(new Vector3(0, -1, 0));
-            }
-        }
+                MovePlayer(new Vector2(0, -1));
     }
 
-    private void MovePlayer(Vector3 direction)
+    [SerializeField, Range(0,10)] private float Distance = 1f;
+    private void MovePlayer(Vector2 direction)
     {
-        player.transform.position += direction;
+        RaycastHit2D hit = Physics2D.Raycast(transform.position, direction, Distance);
 
-        // Play movement sound
-        if (moveSound != null && audioSource != null)
+        if (hit.collider != null && hit.collider.CompareTag("Obstacle"))
+            return;
+        else
         {
-            audioSource.PlayOneShot(moveSound);
+            player.transform.position += (Vector3)direction;
+
+            // Play movement sound
+            if (moveSound != null && audioSource != null)
+                audioSource.PlayOneShot(moveSound);
         }
     }
 }
