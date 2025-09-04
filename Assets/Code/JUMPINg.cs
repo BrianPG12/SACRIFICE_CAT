@@ -34,6 +34,8 @@ public class Jumping : MonoBehaviour
 
         anime.SetBool("Jump", false);
         anime.SetBool("Backwards", false);
+        anime.SetBool("Left", false);
+        anime.SetBool("Right", false);
     }
 
     private bool jumping = false;
@@ -45,11 +47,17 @@ public class Jumping : MonoBehaviour
 
         if ((Input.GetKeyDown(KeyCode.D) || Input.GetKeyDown(KeyCode.RightArrow) && !jumping))
             if (player.transform.position.x < MaxX)
+            {
+                jumpstate = "Right";
                 MovePlayer(new Vector2(jumpDistance, 0));
+            } 
 
         if ((Input.GetKeyDown(KeyCode.A) || Input.GetKeyDown(KeyCode.LeftArrow)) && !jumping)
             if (player.transform.position.x > MinX)
+            {
+                jumpstate = "Left";
                 MovePlayer(new Vector2(-jumpDistance, 0));
+            }
 
         if ((Input.GetKeyDown(KeyCode.W) || Input.GetKeyDown(KeyCode.UpArrow)) && !jumping)
             if (player.transform.position.y < MaxY)
