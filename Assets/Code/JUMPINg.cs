@@ -15,8 +15,12 @@ public class Jumping : MonoBehaviour
     private float MinY;
     private float MaxY;
 
+    [SerializeField] private Animation anime;
+
     void Start()
     {
+        anime.GetComponent<Animation>();
+
         player = gameObject;
         audioSource = GetComponent<AudioSource>();
 
@@ -59,6 +63,10 @@ public class Jumping : MonoBehaviour
         else
         {
             player.transform.position += (Vector3)direction;
+
+            anime.Stop();
+
+            anime.Play();
 
             // Play movement sound
             if (moveSound != null && audioSource != null)
