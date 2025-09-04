@@ -6,7 +6,7 @@ public class Jumping : MonoBehaviour
     [Header("References")]
     [SerializeField] private Transform Floor;
     [SerializeField] private Camera Cam;
-    [SerializeField] private AudioClip moveSound; 
+    [SerializeField] private AudioClip moveSound;
     private AudioSource audioSource;
     private GameObject player;
 
@@ -16,6 +16,8 @@ public class Jumping : MonoBehaviour
     private float MaxY;
 
     [SerializeField] private Animator anime;
+
+    private string jumpstate;
 
     void Start()
     {
@@ -31,31 +33,39 @@ public class Jumping : MonoBehaviour
         MaxY = Cam.transform.position.y + Cam.orthographicSize - 1f;
 
         anime.SetBool("Jump", false);
+        anime.SetBool("Backwards", false);
     }
 
+    private bool jumping = false;
     void Update()
     {
         MinY = Cam.transform.position.y - Cam.orthographicSize + 1f;
         MaxY = Cam.transform.position.y + Cam.orthographicSize - 1f;
 
-        if (Input.GetKeyDown(KeyCode.D) || Input.GetKeyDown(KeyCode.RightArrow))
+        if ((Input.GetKeyDown(KeyCode.D) || Input.GetKeyDown(KeyCode.RightArrow) && !jumping))
             if (player.transform.position.x < MaxX)
                 MovePlayer(new Vector2(1, 0));
 
-        if (Input.GetKeyDown(KeyCode.A) || Input.GetKeyDown(KeyCode.LeftArrow))
+        if ((Input.GetKeyDown(KeyCode.A) || Input.GetKeyDown(KeyCode.LeftArrow)) && !jumping)
             if (player.transform.position.x > MinX)
                 MovePlayer(new Vector2(-1, 0));
 
-        if (Input.GetKeyDown(KeyCode.W) || Input.GetKeyDown(KeyCode.UpArrow))
+        if ((Input.GetKeyDown(KeyCode.W) || Input.GetKeyDown(KeyCode.UpArrow)) && !jumping)
             if (player.transform.position.y < MaxY)
+            { 
+                jumpstate = "Jump";
                 MovePlayer(new Vector2(0, 1));
+            }
 
-        if (Input.GetKeyDown(KeyCode.S) || Input.GetKeyDown(KeyCode.DownArrow))
+        if ((Input.GetKeyDown(KeyCode.S) || Input.GetKeyDown(KeyCode.DownArrow)) && !jumping)
             if (player.transform.position.y > MinY)
+            {
+                jumpstate = "Backwards";
                 MovePlayer(new Vector2(0, -1));
+            }
     }
 
-    [SerializeField, Range(0,10)] private float Distance = 1f;
+    [SerializeField, Range(0, 10)] private float Distance = 1f;
     private void MovePlayer(Vector2 direction)
     {
         RaycastHit2D hit = Physics2D.Raycast(transform.position, direction, Distance);
@@ -64,14 +74,25 @@ public class Jumping : MonoBehaviour
             return;
         else
         {
-            anime.SetBool("Jump", true);
-            
-            player.transform.position += (Vector3)direction;
+            anime.SetBool(jumpstate, true);
+            jumping = true;
 
+            StartCoroutine(StopJumping(direction));
+
+            
             // Play movement sound
             if (moveSound != null && audioSource != null)
                 audioSource.PlayOneShot(moveSound);
 
         }
+    }
+
+    IEnumerator StopJumping(Vector2 direction)
+    {
+        yield return new WaitForSeconds(.5f);
+
+        player.transform.position += (Vector3)direction; 
+        anime.SetBool(jumpstate, false);
+        jumping = false;
     }
 }

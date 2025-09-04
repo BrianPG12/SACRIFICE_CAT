@@ -11,6 +11,7 @@ TagManager:
   - Forest
   - Home
   - City
+  - Potato
   layers:
   - Default
   - TransparentFX
