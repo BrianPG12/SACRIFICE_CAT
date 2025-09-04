@@ -28,6 +28,6 @@ public class Csmera : MonoBehaviour
     void Update()
     {
         if (!isAlive())
-            cam.transform.position = new Vector3(transform.position.x, transform.position.y + speed * Time.deltaTime, cam.transform.position.z);
+            cam.transform.position = new Vector3(transform.position.x, transform.position.y + (speed * Time.deltaTime), cam.transform.position.z);
     }
 }
